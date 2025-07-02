@@ -6,6 +6,7 @@
     <div class="container my-5">
         <h1>Prometheus Metrics</h1>
         @if (!empty($metrics))
+
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -19,7 +20,13 @@
                         <tr>
                             <td>{{ $metric['metric']['__name__'] }}</td>
                             <td>{{ $metric['metric']['instance'] ?? 'N/A' }}</td>
-                            <td>{{ $metric['value'][1] }}</td>
+                            <td>
+                                @if($metric['value'][1] == '1')
+                                    <span class="badge bg-success">Up</span>
+                                @else
+                                    <span class="badge bg-danger">Down</span>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
