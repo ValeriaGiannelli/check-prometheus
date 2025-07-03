@@ -27,6 +27,6 @@ Route::prefix('mock-api')->group(function () {
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 
-Route::get('/chi-siamo', [PageController::class, 'about'])->name('about');
+Route::get('/servizi', [PageController::class, 'services'])->name('services');
 
 Route::get('/contatti', [PageController::class, 'contacts'] )->name('contacts');

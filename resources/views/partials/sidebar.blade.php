@@ -6,7 +6,7 @@
                 <a class="nav-link @if(Route::is('home')) active @endif" href="{{ route('home') }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if(Route::is('about')) active @endif" href="{{ route('about') }}">About</a>
+                <a class="nav-link @if(Route::is('services')) active @endif" href="{{ route('services') }}">Servizi</a>
             </li>
             <!-- Add more menu items as needed -->
         </ul>
