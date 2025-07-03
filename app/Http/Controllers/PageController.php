@@ -11,7 +11,7 @@ class PageController extends Controller
         // Prometheus server URL (replace with your Prometheus server address)
         $prometheusUrl = 'http://localhost:9090/api/v1/query';
 
-        // Example query: Fetch a specific metric (e.g., 'up' to check if targets are up)
+        // Query per vedere lo stato del server
         $query = 'up';
 
         try {
@@ -21,6 +21,7 @@ class PageController extends Controller
             // Check if request was successful
             if ($response->successful()) {
                 $data = $response->json()['data']['result'];
+                //dd($data); // Debugging output, remove in production
             } else {
                 $data = []; // Handle error case
                 \Log::error('Prometheus API request failed: ' . $response->status());
@@ -35,8 +36,31 @@ class PageController extends Controller
     }
 
 
-    public function about(){
-        return view('about');
+    public function services(){
+                // Prometheus server URL (replace with your Prometheus server address)
+        $prometheusUrl = 'http://localhost:9090/api/v1/query';
+
+        // Query per prendere i servizi che mi interessano
+        $query = 'windows_service_state{name=~"MerlinCleaner|Merlin0"} ';
+
+        try {
+            // Make HTTP request to Prometheus API
+            $response = Http::get($prometheusUrl, ['query' => $query]);
+
+            // Check if request was successful
+            if ($response->successful()) {
+                $data = $response->json()['data']['result'];
+                //dd($data); // Debugging output
+            } else {
+                $data = []; // Handle error case
+                \Log::error('Prometheus API request failed: ' . $response->status());
+            }
+        } catch (\Exception $e) {
+            $data = [];
+            \Log::error('Prometheus API error: ' . $e->getMessage());
+        }
+
+        return view('services', ['metrics' => $data]);
     }
 
     public function contacts(){
