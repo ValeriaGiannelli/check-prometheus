@@ -11,8 +11,8 @@
                 <thead>
                     <tr>
                         <th>Metric</th>
-                        <th>Instance</th>
-                        <th>Value</th>
+                        <th>Cliente</th>
+                        <th>Stato</th>
                     </tr>
                 </thead>
                 <tbody>

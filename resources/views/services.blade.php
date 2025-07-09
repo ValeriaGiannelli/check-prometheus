@@ -10,7 +10,7 @@
                 <thead>
                     <tr>
                         <th>Servizio</th>
-                        <th>Instance</th>
+                        <th>Cliente</th>
                         <th>Stato</th>
                     </tr>
                 </thead>

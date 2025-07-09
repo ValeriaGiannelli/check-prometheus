@@ -29,4 +29,4 @@ Route::get('/', [PageController::class, 'index'])->name('home');
 
 Route::get('/servizi', [PageController::class, 'services'])->name('services');
 
-Route::get('/contatti', [PageController::class, 'contacts'] )->name('contacts');
+Route::get('/sql-metrics', [PageController::class, 'sqlServerMetrics'] )->name('sql_metrics');
