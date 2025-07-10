@@ -21,7 +21,7 @@
                     @foreach ($metrics['connection'] as $metric)
                         <tr>
                             <td>{{ $metric['metric']['name'] ?? 'SQL connesso' }}</td>
-                            <td>{{ $metric['metric']['instance'] ?? 'N/A' }}</td>
+                            <td>{{ $metric['metric']['customer'] ?? 'N/A' }}</td>
                             <td>
                                 @if ($metric['value'][1] == '1')
                                     <span class="badge bg-success">Connesso</span>
@@ -36,7 +36,7 @@
                     @foreach ($metrics['memory'] as $metric)
                         <tr>
                             <td>{{ $metric['metric']['name'] ?? 'RAM in uso (%)' }}</td>
-                            <td>{{ $metric['metric']['instance'] ?? 'N/A' }}</td>
+                            <td>{{ $metric['metric']['customer'] ?? 'N/A' }}</td>
                             <td>
                                 <span class="badge {{ $metric['value'][1] > 80 ? 'bg-warning' : 'bg-info' }}">
                                     {{ number_format($metric['value'][1], 2) }}%
@@ -49,7 +49,7 @@
                     @foreach ($metrics['disk'] as $metric)
                         <tr>
                             <td>{{ $metric['metric']['name'] ?? 'Memoria in uso (%)' }}</td>
-                            <td>{{ $metric['metric']['database'] ?? 'N/A' }}</td>
+                            <td>{{ $metric['metric']['customer'] ?? 'N/A' }}</td>
                             <td>
                                 @if($metric['value'][1] > 80)
                                     <span class="badge bg-danger">
