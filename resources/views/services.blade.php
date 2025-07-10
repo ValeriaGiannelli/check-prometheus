@@ -19,7 +19,7 @@
                         @if($metric['value'][1] == '1')
                         <tr>
                             <td>{{ $metric['metric']['name'] }}</td>
-                            <td>{{ $metric['metric']['instance'] ?? 'N/A' }}</td>
+                            <td>{{ $metric['metric']['customer'] ?? 'N/A' }}</td>
                             <td>
                                 @if($metric['metric']['state'] == 'stopped')
                                     <span class="badge bg-danger">Spento</span>
