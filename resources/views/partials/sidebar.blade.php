@@ -6,6 +6,9 @@
                 <a class="nav-link @if(Route::is('customer_metrics')) active @endif" href="{{ route('customer.metrics') }}">Clienti</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link @if(Route::is('customers.index')) active @endif" href="{{ route('customers.index') }}">Gestione clienti</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link @if(Route::is('home')) active @endif" href="{{ route('home') }}">Home</a>
             </li>
             <li class="nav-item">
