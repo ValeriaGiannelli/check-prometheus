@@ -30,3 +30,7 @@ Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/servizi', [PageController::class, 'services'])->name('services');
 
 Route::get('/sql-metrics', [PageController::class, 'sqlServerMetrics'] )->name('sql_metrics');
+
+Route::get('/customer-metrics', [PageController::class, 'customerMetrics'] )->name('customer.metrics');
+
+Route::get('/customer/{customer}/{instance}/{type}', [PageController::class, 'customerDetail'] )->name('customer.detail');

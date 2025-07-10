@@ -12,6 +12,7 @@
                     <tr>
                         <th>Metric</th>
                         <th>Cliente</th>
+                        <th>Monitoraggio</th>
                         <th>Stato</th>
                     </tr>
                 </thead>
@@ -19,7 +20,8 @@
                     @foreach ($metrics as $metric)
                         <tr>
                             <td>{{ $metric['metric']['__name__'] }}</td>
-                            <td>{{ $metric['metric']['instance'] ?? 'N/A' }}</td>
+                            <td>{{ $metric['metric']['customer'] ?? 'N/A' }}</td>
+                            <td>{{ $metric['metric']['job'] ?? 'N/A' }}</td>
                             <td>
                                 @if($metric['value'][1] == '1')
                                     <span class="badge bg-success">Up</span>

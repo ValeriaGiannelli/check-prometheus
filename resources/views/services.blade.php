@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container my-5">
-        <h1>Prometheus Metrics</h1>
+        <h1>Servizi Windows</h1>
         @if (!empty($metrics))
 
             <table class="table table-striped">
@@ -28,6 +28,7 @@
                                 @else
                                     <span class="badge bg-warning">{{ $metric['metric']['state'] }}</span>
                                 @endif
+                            </td>
                         </tr>
                         @endif
                     @endforeach
