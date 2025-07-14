@@ -214,4 +214,36 @@ class PageController extends Controller
 
         return view('customer_detail', compact('customer', 'instance', 'type', 'metrics'));
     }
+
+    // funzione per prendere le versioni del softeware e dei plugin
+    public function getVersion()
+    {
+        $prometheusUrl = 'http://localhost:9090/api/v1/query';
+        $softwareVersionQuery = 'merlin_software_info';
+        $pluginVersionQuery = 'merlin_plugin_info';
+
+        $metrics = ['software' => [], 'plugin' => []];
+        
+        try {
+            $softwareResponse = Http::get($prometheusUrl, ['query' => $softwareVersionQuery]);
+            if ($softwareResponse->successful()) {
+                $metrics['software'] = $softwareResponse->json()['data']['result'];
+            } else {
+                Log::error('Prometheus API request failed for software version: ' . $softwareResponse->status());
+            }
+            
+            $pluginResponse = Http::get($prometheusUrl, ['query' => $pluginVersionQuery]);
+            if ($pluginResponse->successful()) {
+                $metrics['plugin'] = $pluginResponse->json()['data']['result'];
+            } else {
+                Log::error('Prometheus API request failed for plugin version: ' . $pluginResponse->status());
+            }
+
+            //dd($metrics); // DEBUG
+        } catch (\Exception $e) {
+            Log::error('Prometheus API error: ' . $e->getMessage());
+        }
+
+        return view('info_version', ['metrics' => $metrics]);
+    }
 }

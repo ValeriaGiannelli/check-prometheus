@@ -32,3 +32,7 @@ Route::post('/customers', [CustomerController::class, 'store'])->name('customers
 Route::get('/customers/{customer}/{ip}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
 Route::put('/customers/{customer}/{ip}', [CustomerController::class, 'update'])->name('customers.update');
 Route::delete('/customers/{customer}/{ip}', [CustomerController::class, 'destroy'])->name('customers.destroy');
+
+Route::get('/version', [PageController::class, 'getVersion'])->name('info_version');
+
+
