@@ -31,6 +31,11 @@
             <li class="nav-item">
                 <a class="nav-link @if(Route::is('info_version')) active @endif" href="{{ route('info_version') }}">Versioni</a>
             </li>
+            
+            <!--LOG-->
+            <li class="nav-item">
+                <a class="nav-link @if(Route::is('log')) active @endif" href="{{ route('logs.index') }}">Log</a>
+            </li>
             <!-- Add more menu items as needed -->
         </ul>
     </div>
